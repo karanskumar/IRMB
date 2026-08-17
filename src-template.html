@@ -100,7 +100,7 @@ header.site{
 .nav-menu>li>a.btn-primary:hover{background:var(--crimson-dark);color:#fff}
 .has-drop{position:relative}
 .drop{
-  position:absolute;top:calc(100% + 8px);left:0;min-width:288px;background:#fff;
+  position:absolute;top:calc(100% + 8px);left:0;min-width:330px;background:#fff;
   border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);
   padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:all .18s ease;
@@ -123,9 +123,14 @@ header.site{
 .hero h1{margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--crimson)}
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin:34px 0 26px}
-.hero-trust{display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--muted);flex-wrap:wrap}
-.hero-trust b{color:var(--ink);font-weight:600}
-.dot{width:4px;height:4px;border-radius:50%;background:var(--line-strong);flex:none}
+/* Pages that aren't built yet — shown, but not clickable */
+.soon{opacity:.4;cursor:default;pointer-events:none}
+.soon-tag{
+  display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--line-strong);
+  border-radius:999px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);vertical-align:middle;
+}
+.soon-note{display:inline-block;margin-top:4px;font-size:.85rem;font-weight:600;color:var(--muted)}
 
 .hero-visual{position:relative}
 .stat-stack{display:grid;gap:14px;position:relative;z-index:1}
@@ -142,7 +147,7 @@ header.site{
 .profit-intro{display:flex;align-items:center;gap:14px;margin-top:30px}
 .profit-intro img{width:104px;flex:none;filter:drop-shadow(0 14px 26px rgba(22,17,15,.16));animation:bob 4.5s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@media(prefers-reduced-motion:reduce){.profit-intro img{animation:none}}
+@media(prefers-reduced-motion:reduce){.profit-intro img,.foot-profit img{animation:none}}
 .profit-bubble{
   position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;
   padding:15px 20px;box-shadow:var(--shadow);max-width:252px;
@@ -166,6 +171,16 @@ header.site{
 .tb-item:last-child{padding-right:0}
 .tb-item .v{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .tb-item .k{font-size:.79rem;color:rgba(255,255,255,.66);letter-spacing:.02em;line-height:1.4}
+/* Association marks sit on a white chip — both are dark-on-light artwork */
+.tb-logo{display:flex;align-items:center;justify-content:flex-start}
+.tb-logo span{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;border-radius:10px;padding:9px 13px;
+}
+/* Sized per mark so the compact badge and the wide wordmark read at the same weight */
+.tb-logo img{display:block;width:auto}
+.tb-logo .mark-mmba{height:46px}
+.tb-logo .mark-amba{height:29px}
 
 /* ---------- Section heads ---------- */
 .sec-head{max-width:640px;margin-bottom:52px}
@@ -288,6 +303,24 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
   display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:.82rem;margin-top:22px;
 }
+.foot-profit{
+  display:flex;align-items:center;gap:22px;
+  border-top:1px solid rgba(255,255,255,.1);padding:30px 0;
+}
+.foot-profit img{
+  width:78px;flex:none;filter:drop-shadow(0 12px 22px rgba(0,0,0,.5));
+  animation:bob 4.5s ease-in-out infinite;
+}
+.foot-profit b{
+  display:block;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.02rem;font-weight:700;margin-bottom:5px;
+}
+.foot-profit span{display:block;font-size:.9rem;line-height:1.55;max-width:540px}
+.foot-assoc{display:flex;align-items:center;gap:10px}
+.foot-assoc i{display:inline-flex;align-items:center;background:#fff;border-radius:8px;padding:7px 11px}
+.foot-assoc img{display:block;width:auto}
+.foot-assoc .mark-mmba{height:34px}
+.foot-assoc .mark-amba{height:21px}
 
 /* ---------- Service page ---------- */
 .page-hero{background:var(--white);border-bottom:1px solid var(--line);padding:60px 0 84px;position:relative;overflow:hidden}
@@ -388,6 +421,7 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
   .stat-card.offset{margin-left:0}
   .profit-intro img{width:88px}
   .profit-bubble{padding:13px 16px}
+  .foot-profit{flex-direction:column;align-items:flex-start;gap:16px}
   .cta-profit{display:none}
   .section{padding:76px 0}
   .wrap{padding:0 22px}
@@ -425,9 +459,9 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <a>Services <i class="chev"></i></a>
         <div class="drop">
           <a href="#" data-page="rcm">Revenue Cycle Management<small>End-to-end ownership of your revenue cycle</small></a>
-          <a href="#" data-page="rcm">Medical Billing &amp; Coding<small>Daily claim submission and denial work</small></a>
-          <a href="#" data-page="rcm">Credentialing &amp; Contracting<small>Enrollments, revalidations, payer contracts</small></a>
-          <a href="#" data-page="rcm">Patient Liaison &amp; Advocacy<small>We speak to insurers on your patients' behalf</small></a>
+          <a class="soon">Medical Billing &amp; Coding<span class="soon-tag">Soon</span><small>Daily claim submission and denial work</small></a>
+          <a class="soon">Credentialing &amp; Contracting<span class="soon-tag">Soon</span><small>Enrollments, revalidations, payer contracts</small></a>
+          <a class="soon">Patient Liaison &amp; Advocacy<span class="soon-tag">Soon</span><small>We speak to insurers on your patients' behalf</small></a>
         </div>
       </li>
       <li><a>Specialties</a></li>
@@ -452,11 +486,6 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
       <div class="hero-actions">
         <a class="btn btn-primary">Schedule a Call</a>
         <a class="btn btn-ghost" href="#what">See where you fit</a>
-      </div>
-      <div class="hero-trust">
-        <b>99% clean claim rate</b><i class="dot"></i>
-        <b>11 years in business</b><i class="dot"></i>
-        <b>25+ years in the industry</b>
       </div>
     </div>
     <div class="hero-visual">
@@ -487,11 +516,11 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
 
 <section class="trustbar">
   <div class="wrap">
-    <div class="tb-item"><div class="v">99%</div><div class="k">Clean claim rate</div></div>
     <div class="tb-item"><div class="v">30,000</div><div class="k">Claims processed a year</div></div>
     <div class="tb-item"><div class="v">11 yrs</div><div class="k">In business · 25+ in the industry</div></div>
     <div class="tb-item"><div class="v">CMRS</div><div class="k">Certified Medical Reimbursement Specialists</div></div>
-    <div class="tb-item"><div class="v">MMBA</div><div class="k">Michigan Medical Billers Association</div></div>
+    <div class="tb-item tb-logo"><span><img class="mark-mmba" src="{{MMBA}}" alt="Member, Michigan Medical Billers Association"></span></div>
+    <div class="tb-item tb-logo"><span><img class="mark-amba" src="{{AMBA}}" alt="Member, American Medical Billing Association"></span></div>
   </div>
 </section>
 
@@ -528,7 +557,7 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
 <section class="section why">
   <div class="wrap why-grid">
     <div class="why-sticky">
-      <div class="eyebrow">Why IRMB</div>
+      <div class="eyebrow">Why Infinite Revenue &amp; Medical Billing</div>
       <h2>A partner, not a portal.</h2>
       <p class="lede" style="margin-top:16px">You get named people who know your practice, your payers and your problem claims — and who tell you the truth about all three.</p>
       <a class="btn btn-primary" style="margin-top:28px">Schedule a Call</a>
@@ -585,19 +614,19 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg></div>
         <h3>Medical Billing &amp; Coding</h3>
         <p>Accurate coding and clean electronic claim submission, every day. We catch the errors before the payer does — which is how we hold a 99% clean claim rate across 30,000 claims a year.</p>
-        <a class="link-arrow" href="#" data-page="rcm">Explore service <span>→</span></a>
+        <span class="soon-note">Page coming soon</span>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg></div>
         <h3>Credentialing &amp; Contracting</h3>
         <p>Payer enrollments, revalidations, CAQH upkeep and contract negotiation — tracked to completion so new providers start billing on day one instead of month three.</p>
-        <a class="link-arrow" href="#" data-page="rcm">Explore service <span>→</span></a>
+        <span class="soon-note">Page coming soon</span>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></div>
         <h3>Patient Liaison &amp; Advocacy</h3>
         <p>With the patient's permission we join three-way calls with their carrier, translate the insurance language and push back on their behalf — protecting them from surprise costs and protecting you from patient A/R.</p>
-        <a class="link-arrow" href="#" data-page="rcm">Explore service <span>→</span></a>
+        <span class="soon-note">Page coming soon</span>
       </div>
     </div>
   </div>
@@ -788,7 +817,7 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         </div>
       </div>
       <div style="text-align:center;padding-top:20px">
-        <img src="{{PROFIT}}" alt="Profit, the IRMB mascot" style="width:170px;margin:0 auto 24px;filter:drop-shadow(0 14px 26px rgba(22,17,15,.14))">
+        <img src="{{PROFIT}}" alt="Profit, the Infinite Revenue &amp; Medical Billing mascot" style="width:170px;margin:0 auto 24px;filter:drop-shadow(0 14px 26px rgba(22,17,15,.14))">
         <p class="muted" style="font-size:.93rem">Profit keeps score.<br>So do we — daily.</p>
       </div>
     </div>
@@ -873,9 +902,9 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <h4>Services</h4>
         <ul>
           <li><a href="#" data-page="rcm">Revenue Cycle Management</a></li>
-          <li><a href="#" data-page="rcm">Medical Billing &amp; Coding</a></li>
-          <li><a href="#" data-page="rcm">Credentialing &amp; Contracting</a></li>
-          <li><a href="#" data-page="rcm">Patient Liaison &amp; Advocacy</a></li>
+          <li><a class="soon">Medical Billing &amp; Coding</a></li>
+          <li><a class="soon">Credentialing &amp; Contracting</a></li>
+          <li><a class="soon">Patient Liaison &amp; Advocacy</a></li>
         </ul>
       </div>
       <div>
@@ -890,14 +919,24 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <div class="foot-contact">
           <a href="tel:+18884476235">(888) 447-6235</a>
           <a href="mailto:info@irmedicalbilling.com">info@irmedicalbilling.com</a>
-          <div>440 Burroughs St. #167<br>Linden, MI 48451</div>
+          <div>Linden, MI 48451</div>
           <div style="margin-top:6px">Mon–Fri, 9:00am–5:00pm ET</div>
         </div>
       </div>
     </div>
+    <div class="foot-profit">
+      <img src="{{PROFIT}}" alt="Profit, the Infinite Revenue &amp; Medical Billing mascot">
+      <div>
+        <b>Say hello to Profit.</b>
+        <span>Our mascot, named after the thing we're here to help you keep. He's an infinity loop — because the revenue cycle never really stops, and neither do we.</span>
+      </div>
+    </div>
     <div class="foot-bottom">
       <div>© 2026 Infinite Revenue &amp; Medical Billing LLC. All rights reserved.</div>
-      <div>Member, Michigan Medical Billers Association · American Medical Billing Association</div>
+      <div class="foot-assoc">
+        <i><img class="mark-mmba" src="{{MMBA}}" alt="Member, Michigan Medical Billers Association"></i>
+        <i><img class="mark-amba" src="{{AMBA}}" alt="Member, American Medical Billing Association"></i>
+      </div>
     </div>
   </div>
 </footer>

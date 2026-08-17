@@ -29,23 +29,53 @@ buf = io.BytesIO()
 mascot.save(buf, "PNG", optimize=True)
 profit = "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
 
+def inline(filename, height, fmt="PNG"):
+    """Load an asset, scale it to `height` px and return it as a data URL."""
+    im = Image.open(os.path.join(HERE, "assets", filename))
+    im = im.resize((round(im.width * height / im.height), height), Image.LANCZOS)
+    buf = io.BytesIO()
+    if fmt == "JPEG":
+        if im.mode == "RGBA":
+            # Both association marks render on a white chip, so flattening the
+            # alpha onto white is lossless in context and far smaller than PNG.
+            flat = Image.new("RGB", im.size, "white")
+            flat.paste(im, mask=im.getchannel("A"))
+            im = flat
+        im.convert("RGB").save(buf, "JPEG", quality=86, optimize=True)
+    else:
+        im.save(buf, "PNG", optimize=True)
+    return "data:image/%s;base64,%s" % (
+        fmt.lower(),
+        base64.b64encode(buf.getvalue()).decode(),
+    )
+
+
+# Images used more than once are injected via JS instead of being repeated as
+# data URLs. The mascot appears 5 times; each association mark twice.
+REPEATED = {
+    "profit": profit,
+    "mmba": inline("MMBA_logo.png", 96, "JPEG"),
+    "amba": inline("AMBA_logo.jpg", 96, "JPEG"),
+}
+
 html = open(TEMPLATE).read()
 html = html.replace("{{LOGO_WHITE}}", assets["logo_white"])
 html = html.replace("{{LOGO}}", assets["logo"])
-html = html.replace('src="{{PROFIT}}"', 'data-img="profit"')
+for key in REPEATED:
+    html = html.replace('src="{{%s}}"' % key.upper(), 'data-img="%s"' % key)
 
 ANCHOR = """    document.getElementById('navMenu').classList.toggle('open');
   });"""
-html = html.replace(
-    ANCHOR,
-    ANCHOR
-    + '\n  var P="'
-    + profit
-    + '";\n  document.querySelectorAll(\'[data-img="profit"]\').forEach(function(el){el.src=P});',
+inject = "".join(
+    '\n  document.querySelectorAll(\'[data-img="%s"]\')'
+    '.forEach(function(el){el.src="%s"});' % (key, url)
+    for key, url in REPEATED.items()
 )
+html = html.replace(ANCHOR, ANCHOR + inject)
 
 assert "{{" not in html, "unreplaced placeholder remains"
-assert "var P=" in html, "mascot injection failed"
+for key in REPEATED:
+    assert 'data-img="%s"' % key in html, "%s injection failed" % key
 
 open(OUTPUT, "w").write(html)
 print("wrote %s (%d KB)" % (OUTPUT, len(html) // 1024))
