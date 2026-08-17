@@ -100,13 +100,15 @@ header.site{
 .nav-menu>li>a.btn-primary:hover{background:var(--crimson-dark);color:#fff}
 .has-drop{position:relative}
 .drop{
-  position:absolute;top:calc(100% + 8px);left:0;min-width:330px;background:#fff;
+  position:absolute;top:calc(100% + 8px);left:0;min-width:288px;background:#fff;
   border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);
   padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:all .18s ease;
 }
 .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
-.drop a{display:block;padding:11px 14px;border-radius:9px;font-size:.93rem;font-weight:600;color:var(--ink-soft)}
+/* cursor is set explicitly: the unbuilt services have no href, and browsers
+   only apply the pointer cursor to anchors that link somewhere. */
+.drop a{display:block;padding:11px 14px;border-radius:9px;font-size:.93rem;font-weight:600;color:var(--ink-soft);cursor:pointer}
 .drop a small{display:block;font-weight:400;font-size:.81rem;color:var(--muted);margin-top:2px;line-height:1.4}
 .drop a:hover{background:var(--cream);color:var(--crimson)}
 .chev{width:9px;height:9px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);opacity:.55}
@@ -125,11 +127,6 @@ header.site{
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin:34px 0 26px}
 /* Pages that aren't built yet — shown, but not clickable */
 .soon{opacity:.4;cursor:default;pointer-events:none}
-.soon-tag{
-  display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--line-strong);
-  border-radius:999px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);vertical-align:middle;
-}
 .soon-note{display:inline-block;margin-top:4px;font-size:.85rem;font-weight:600;color:var(--muted)}
 
 .hero-visual{position:relative}
@@ -457,9 +454,9 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <a>Services <i class="chev"></i></a>
         <div class="drop">
           <a href="#" data-page="rcm">Revenue Cycle Management<small>End-to-end ownership of your revenue cycle</small></a>
-          <a class="soon">Medical Billing &amp; Coding<span class="soon-tag">Soon</span><small>Daily claim submission and denial work</small></a>
-          <a class="soon">Credentialing &amp; Contracting<span class="soon-tag">Soon</span><small>Enrollments, revalidations, payer contracts</small></a>
-          <a class="soon">Patient Liaison &amp; Advocacy<span class="soon-tag">Soon</span><small>We speak to insurers on your patients' behalf</small></a>
+          <a>Medical Billing &amp; Coding<small>Daily claim submission and denial work</small></a>
+          <a>Credentialing &amp; Contracting<small>Enrollments, revalidations, payer contracts</small></a>
+          <a>Patient Liaison &amp; Advocacy<small>We speak to insurers on your patients' behalf</small></a>
         </div>
       </li>
       <li><a>Specialties</a></li>
