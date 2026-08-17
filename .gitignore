@@ -1,0 +1,11 @@
+# Internal working documents — not for the public repo
+CLAUDE.md
+BUILD-PLAN.md
+
+# Local tooling
+.claude/
+
+# OS / Python
+.DS_Store
+__pycache__/
+*.pyc
