@@ -71,7 +71,7 @@ img{max-width:100%;display:block}
 .btn-sm{padding:11px 22px;font-size:.9rem}
 .link-arrow{
   display:inline-flex;align-items:center;gap:7px;font-weight:600;color:var(--crimson);
-  font-size:.95rem;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.95rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;
 }
 .link-arrow span{transition:transform .18s ease;display:inline-block}
 .link-arrow:hover span{transform:translateX(4px)}
@@ -126,8 +126,6 @@ header.site{
 .hero h1 em{font-style:normal;color:var(--crimson)}
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin:34px 0 26px}
 /* Pages that aren't built yet — shown, but not clickable */
-.soon{opacity:.4;cursor:default;pointer-events:none}
-.soon-note{display:inline-block;margin-top:4px;font-size:.85rem;font-weight:600;color:var(--muted)}
 
 .hero-visual{position:relative}
 .stat-stack{display:grid;gap:14px;position:relative;z-index:1}
@@ -302,6 +300,7 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
 .foot-logo img{height:38px;margin-bottom:20px}
 .foot-grid h4{color:#fff;font-size:.79rem;letter-spacing:.13em;text-transform:uppercase;margin-bottom:20px;font-weight:700}
 .foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.foot-grid a{cursor:pointer}
 .foot-grid a:hover{color:#fff}
 .foot-contact{display:grid;gap:9px;margin-top:6px}
 .foot-bottom{
@@ -615,19 +614,19 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg></div>
         <h3>Medical Billing &amp; Coding</h3>
         <p>Accurate coding and clean electronic claim submission, every day. We catch the errors before the payer does — which is how we hold a 99% clean claim rate across 30,000 claims a year.</p>
-        <span class="soon-note">Page coming soon</span>
+        <a class="link-arrow">Explore service <span>→</span></a>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg></div>
         <h3>Credentialing &amp; Contracting</h3>
         <p>Payer enrollments, revalidations, CAQH upkeep and contract negotiation — tracked to completion so new providers start billing on day one instead of month three.</p>
-        <span class="soon-note">Page coming soon</span>
+        <a class="link-arrow">Explore service <span>→</span></a>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></div>
         <h3>Patient Liaison &amp; Advocacy</h3>
         <p>With the patient's permission we join three-way calls with their carrier, translate the insurance language and push back on their behalf — protecting them from surprise costs and protecting you from patient A/R.</p>
-        <span class="soon-note">Page coming soon</span>
+        <a class="link-arrow">Explore service <span>→</span></a>
       </div>
     </div>
   </div>
@@ -911,9 +910,9 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
         <h4>Services</h4>
         <ul>
           <li><a href="#" data-page="rcm">Revenue Cycle Management</a></li>
-          <li><a class="soon">Medical Billing &amp; Coding</a></li>
-          <li><a class="soon">Credentialing &amp; Contracting</a></li>
-          <li><a class="soon">Patient Liaison &amp; Advocacy</a></li>
+          <li><a>Medical Billing &amp; Coding</a></li>
+          <li><a>Credentialing &amp; Contracting</a></li>
+          <li><a>Patient Liaison &amp; Advocacy</a></li>
         </ul>
       </div>
       <div>
