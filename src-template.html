@@ -251,10 +251,14 @@ header.site{
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
 .plat-chip{
-  border:1px solid var(--line);background:var(--cream);border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);background:#fff;border-radius:999px;
   padding:13px 28px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
   font-size:1.02rem;color:var(--ink-soft);white-space:nowrap;
 }
+/* Logos ship on a white plate, so the chip is white too — height is set per
+   logo inline, normalised by area rather than by a shared height. */
+.plat-chip img{display:block;width:auto}
 
 /* ---------- Testimonials ---------- */
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -642,10 +646,18 @@ footer.site{background:#0F0C0B;color:rgba(255,255,255,.62);font-size:.92rem;padd
   </div>
   <div class="marquee">
     <div class="marquee-track">
-      <div class="plat-chip">TherapyNotes</div><div class="plat-chip">CollaborateMD</div><div class="plat-chip">NextGen</div>
-      <div class="plat-chip">Greenway</div><div class="plat-chip">Tebra</div><div class="plat-chip">…and more</div>
-      <div class="plat-chip">TherapyNotes</div><div class="plat-chip">CollaborateMD</div><div class="plat-chip">NextGen</div>
-      <div class="plat-chip">Greenway</div><div class="plat-chip">Tebra</div><div class="plat-chip">…and more</div>
+      <div class="plat-chip"><img src="{{THERAPYNOTES}}" alt="TherapyNotes" style="height:28px"></div>
+      <div class="plat-chip"><img src="{{COLLABORATEMD}}" alt="CollaborateMD" style="height:30px"></div>
+      <div class="plat-chip"><img src="{{NEXTGEN}}" alt="NextGen Healthcare" style="height:38px"></div>
+      <div class="plat-chip"><img src="{{GREENWAY}}" alt="Greenway Health" style="height:32px"></div>
+      <div class="plat-chip"><img src="{{TEBRA}}" alt="Tebra" style="height:30px"></div>
+      <div class="plat-chip">…and more</div>
+      <div class="plat-chip"><img src="{{THERAPYNOTES}}" alt="TherapyNotes" style="height:28px"></div>
+      <div class="plat-chip"><img src="{{COLLABORATEMD}}" alt="CollaborateMD" style="height:30px"></div>
+      <div class="plat-chip"><img src="{{NEXTGEN}}" alt="NextGen Healthcare" style="height:38px"></div>
+      <div class="plat-chip"><img src="{{GREENWAY}}" alt="Greenway Health" style="height:32px"></div>
+      <div class="plat-chip"><img src="{{TEBRA}}" alt="Tebra" style="height:30px"></div>
+      <div class="plat-chip">…and more</div>
     </div>
   </div>
 </section>
